@@ -1,14 +1,15 @@
-import Header from "./assets/components/Header.jsx"
-import Greetings from './assets/components/Greetings.jsx'
+import Header from "./components/Header.jsx"
+import ItemListContainer from "./components/ItemListContainer.jsx";
+import ItemDetailContainer from "./components/ItemDetailContainer.jsx";
 import './App.css'
 
 function App() {
-
   return (
     <>
     <Header />
-    <main>
-      <Greetings message={"Bienvenidos a mi página"}/>
+    <main className="py-8">
+      {/* <ItemListContainer /> */}
+      <ItemDetailContainer itemId={8}/>
     </main>
     </>
   )
