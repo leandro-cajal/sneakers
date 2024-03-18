@@ -69,6 +69,7 @@ const Data = [
                     "name": "Nike Zoom Pegasus Turbo 2",
                     "model": "Zoom Pegasus",
                     "price": 180,
+                    "new": true,
                     "sizes": [
                         "US 6",
                         "US 7",
@@ -114,6 +115,7 @@ const Data = [
                     "name": "Nike Blazer Mid '77 Vintage",
                     "model": "Blazer Mid",
                     "price": 100,
+                    "new": true,
                     "sizes": [
                         "US 6",
                         "US 7",
@@ -267,6 +269,7 @@ const Data = [
                     "name": "Nike React Element 55",
                     "model": "React Element",
                     "price": 130,
+                    "new": true,
                     "sizes": [
                         "US 7",
                         "US 8",
@@ -397,6 +400,7 @@ const Data = [
                     "name": "Nike Epic React Flyknit 2",
                     "model": "Epic React",
                     "price": 150,
+                    "new": true,
                     "sizes": [
                         "US 7",
                         "US 8",

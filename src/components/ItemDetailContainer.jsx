@@ -1,19 +1,21 @@
 import { useEffect, useState } from "react";
 import { GetItemById } from "../FetchData";
 import { ItemDetail } from "./ItemDetail";
+import { useParams } from "react-router-dom";
 
 
-const ItemDetailContainer = ({itemId}) =>{
+const ItemDetailContainer = () =>{
 
     const [item,setItem] = useState(null);
+    const id = useParams().id;
 
     useEffect(() => {
-        GetItemById(itemId)
+        GetItemById(Number(id))
             .then((resp) => setItem(resp))
-    }, [itemId])
+    }, [id])
 
     return(
-        <div>
+        <div className="pt-36 pb-20">
             {item &&
             <ItemDetail item={item} />}
             

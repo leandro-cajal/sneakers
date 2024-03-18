@@ -1,33 +1,62 @@
-export const ItemDetail = ({item}) =>{
+export const ItemDetail = ({ item }) => {
 
     return (
         <div className="max-w-7xl mx-auto">
-            {item && ( // Verificar si item está definido
-                <div className="flex gap-4">
-                    <div className="w-24 flex flex-col gap-2">
-                        {item.images && item.images.map((image, index) => ( // Verificar si item.images está definido
-                            <div key={index}>
-                                <img src={image} alt={item.name} />
-                            </div>
-                        ))}
-                    </div>
-                    <div className="max-w-4xl w-full">
-                        {item.images && item.images.length > 0 && ( // Verificar si item.images está definido y tiene al menos un elemento
-                            <img className="w-full object-cover" src={item.images[0]} alt={item.name} />
-                        )}
-                    </div>
-                    <div className="flex flex-col w-full">
-                        <h3>{item.name}</h3>
-                        <span>Talles Disponibles</span>
-                        <div className="flex gap-1">
-                            {item.sizes && item.sizes.map((size, index) => ( // Verificar si item.size está definido
-                                <div key={index} className="p-2 bg-black text-white">{size}</div>
+            {item && (
+                <div className="gap-4 flex flex-row px-4 md:px-0">
+                    <div className=" max-w-[160px] hidden md:block">
+                        <div className="flex flex-col gap-2">
+                            {item.images && item.images.map((image, index) => (
+                                <div className={`w-24 h-20 border border-stone-300 ${index === 0 ? 'brightness-75' : ''}`} key={index}>
+                                    <img className={`w-full h-full object-cover hover:filter ${index === 0 ? '' : 'hover:brightness-75'} cursor-pointer`} src={image} alt={item.name} />
+                                </div>
                             ))}
                         </div>
-                        <div className="mx-auto">
-                            <h4>{item.model}</h4>
+                    </div>
+                    <div className="flex flex-col lg:flex-row gap-6">
+                        <div className="max-w-[896px] w-full">
+                            <div className="h-full w-full">
+                                {item.images && item.images.length > 0 && (
+                                    <img className="max-w-4xl max-h-[550px] w-full h-full object-cover border border-stone-300" src={item.images[0]} alt={item.name} />
+                                )}
+                            </div>
+                        </div>
+                        <div className="">
+                            <div className="flex flex-col space-y-4">
+                                <h3 className="text-xl uppercase">{item.name}</h3>
+                                <span className="text-sm">Talles Disponibles</span>
+                                <div className="flex gap-2">
+                                    {item.sizes && item.sizes.map((size, index) => (
+                                        <div key={index} className="grid place-items-center h-14 w-14 border-black border bg-stone-100 hover:bg-black hover:text-white transition-colors cursor-pointer">
+                                            <span className="text-xs m-auto">{size}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                                <div>
+                                    <h4>{item.model}</h4>
+                                </div>
+                                <div className="flex flex-col lg:flex-row gap-4 items-center w-fit">
+                                    <span className="px-4 text-3xl ml-auto md:mx-auto font-bold w-fit">US${item.price}.00</span>
+                                    <button className=" p-6 bg-black text-white hover:bg-stone-100 border border-black hover:text-black duration-300 transition-colors uppercase">
+                                        <i className="bi bi-cart3 text-lg"></i> Añadir al Carro
+                                    </button>
+                                </div>
+                                <div className="bg-stone-50 text-black p-6 text-xs grid grid-cols-2 w-fit gap-x-28 gap-y-2 border border-stone-300 cursor-pointer">
+                                    <div className="flex gap-2 items-center"><i className="bi bi-check-lg text-lg"></i><span>Distribuidor Oficial</span></div>
+                                    <div className="flex gap-2 items-center"><i className="bi bi-clock text-lg"></i><span>Entrega en 24/48h</span></div>
+                                    <div className="flex gap-2 items-center"><i className="bi bi-truck text-lg"></i><span>Envío Gratuito *</span></div>
+                                    <div className="flex gap-2 items-center"><i className="bi bi-box-seam text-lg"></i><span>Devolución Sencilla</span></div>
+                                </div>
+                                <article className="pt-4 pb-8 border-y border-black text-xs">
+                                    <h2 className="text-xs uppercase font-light text-black">Detalles</h2>
+                                    <h1 className="pb-4">{item.name}</h1>
+                                    <div className="flex items-center gap-1"><p className="text-black font-bold">Modelo:</p><h1 className="text-stone-600">{item.model}.</h1></div>
+                                    <div className="flex items-top gap-1"><p className="text-black font-bold">Descripción:</p><p className="text-stone-600">{item.description}</p></div>
+                                </article>
+                            </div>
                         </div>
                     </div>
+
                 </div>
             )}
         </div>
