@@ -1,14 +1,25 @@
+import { useEffect, useState } from "react"
+
+
+
 export const ItemDetail = ({ item }) => {
+
+    const [sizeSelected, setSizeSelected] = useState("");
+    const [imageSelected, setImageSelected] = useState(0);
+
+    const handleImageClick = (index) => {
+        setImageSelected(index);
+    };
 
     return (
         <div className="max-w-7xl mx-auto">
             {item && (
-                <div className="gap-4 flex flex-row px-4 md:px-0">
-                    <div className=" max-w-[160px] hidden md:block">
-                        <div className="flex flex-col gap-2">
-                            {item.images && item.images.map((image, index) => (
-                                <div className={`w-24 h-20 border border-stone-300 ${index === 0 ? 'brightness-75' : ''}`} key={index}>
-                                    <img className={`w-full h-full object-cover hover:filter ${index === 0 ? '' : 'hover:brightness-75'} cursor-pointer`} src={image} alt={item.name} />
+                <div className="gap-4 flex flex-col lg:flex-row px-4 md:px-0">
+                    <div className=" lg:max-w-[160px]">
+                        <div className="flex lg:flex-col gap-2">
+                        {item.images && item.images.map((image, index) => (
+                                <div className={`lg:w-24 lg:h-20 border border-stone-300 ${index === imageSelected ? 'brightness-75' : ''}`} key={index} onClick={() => handleImageClick(index)}>
+                                    <img className={`w-full h-full object-cover hover:filter ${index === imageSelected ? '' : 'hover:brightness-75'} cursor-pointer`} src={image} alt={item.name}/>
                                 </div>
                             ))}
                         </div>
@@ -16,8 +27,7 @@ export const ItemDetail = ({ item }) => {
                     <div className="flex flex-col lg:flex-row gap-6">
                         <div className="max-w-[896px] w-full">
                             <div className="h-full w-full">
-                                {item.images && item.images.length > 0 && (
-                                    <img className="max-w-4xl max-h-[550px] w-full h-full object-cover border border-stone-300" src={item.images[0]} alt={item.name} />
+                                {item.images && item.images.length > 0 && (<img className="max-w-[680px] max-h-[550px] w-full h-full object-cover border border-stone-300" src={item.images[imageSelected]} alt={item.name}/>
                                 )}
                             </div>
                         </div>
@@ -27,7 +37,7 @@ export const ItemDetail = ({ item }) => {
                                 <span className="text-sm">Talles Disponibles</span>
                                 <div className="flex gap-2">
                                     {item.sizes && item.sizes.map((size, index) => (
-                                        <div key={index} className="grid place-items-center h-14 w-14 border-black border bg-stone-100 hover:bg-black hover:text-white transition-colors cursor-pointer">
+                                        <div key={index} className={`grid place-items-center h-14 w-14 transition-colors cursor-pointer ${size === sizeSelected ? "bg-black text-white" : "border-black border bg-stone-100 hover:bg-black hover:text-white "}`}onClick={() => setSizeSelected(size)}>
                                             <span className="text-xs m-auto">{size}</span>
                                         </div>
                                     ))}

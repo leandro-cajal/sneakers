@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const Index = () => {
+const Home = () => {
   return (
     <section className='pt-32 pb-20 space-y-16'>
         <div className='mx-auto max-w-7xl space-y-14 pb-4'>
@@ -21,4 +21,4 @@ const Index = () => {
   )
 }
 
-export default Index;
+export default Home;

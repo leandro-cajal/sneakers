@@ -355,7 +355,7 @@ const Data = [
                 {
                     "id": 17,
                     "name": "Nike Jordan 1 ",
-                    "model": "jordan 1",
+                    "model": "Jordan 1",
                     "price": 220,
                     "sizes": [
                         "US 7",

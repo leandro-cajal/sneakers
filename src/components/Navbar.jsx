@@ -1,7 +1,9 @@
-import { Link } from "react-router-dom";
+import { NavLink, Link, useLocation } from "react-router-dom";
 import CartWidget from "./CartWidget.jsx";
 
 const Navbar = () => {
+    const location = useLocation();
+
     return (
         <>
             <header className="w-full fixed bg-white shadow-lg z-50">
@@ -10,14 +12,19 @@ const Navbar = () => {
                         <img className="w-32 h-6 lg:w-60 lg:h-20 object-cover drop-shadow-lg" src="../public/logo/logo.png" alt="Logo - Sneakers" />
                     </Link>
                     <ul className="hidden lg:flex gap-5 ">
-                        <li className="hover:text-red-600 hover:border-b-red-600 border-transparent border-b-2 transition-colors duration-200 py-5">
-                            <Link to="/zapatillas">ZAPATILLAS</Link></li>
-                        <li className="hover:text-red-600 hover:border-b-red-600 border-transparent border-b-2 transition-colors duration-200 py-5">
-                        <Link to="/zapatillas/jordan">JORDAN</Link></li>
-                        <li className="hover:text-red-600 hover:border-b-red-600 border-transparent border-b-2 transition-colors duration-200 py-5">
-                            <Link to="/zapatillas/new">NOVEDADES</Link></li>
-                        <li className="text-red-600 hover:border-b-red-600 border-transparent border-b-2 transition-colors duration-3200 py-5">
-                            <Link to="zapatillas/discount">REBAJAS</Link></li>
+                        <li>
+                            {/* Agregamos una clase activa si la ruta actual coincide */}
+                            <NavLink className={`hover:text-red-600 border-transparent border-b-2 transition-colors duration-200 py-5 ${location.pathname === '/zapatillas' ? 'text-red-600 border-red-600' : ''}`} to="/zapatillas">ZAPATILLAS</NavLink>
+                        </li>
+                        <li>
+                            <NavLink className={`hover:text-red-600 border-transparent border-b-2 transition-colors duration-200 py-5 ${location.pathname === '/zapatillas/jordan' ? 'text-red-600 border-red-600' : ''}`} to="/zapatillas/jordan">JORDAN</NavLink>
+                        </li>
+                        <li>
+                            <NavLink className={`hover:text-red-600 border-transparent border-b-2 transition-colors duration-200 py-5 ${location.pathname === '/zapatillas/new' ? 'text-red-600 border-red-600' : ''}`} to="/zapatillas/new">NOVEDADES</NavLink>
+                        </li>
+                        <li>
+                            <NavLink className={`hover:text-red-600 border-transparent border-b-2 transition-colors duration-200 py-5 ${location.pathname === '/zapatillas/discount' ? 'text-red-600 border-red-600' : ''}`} to="/zapatillas/discount">REBAJAS</NavLink>
+                        </li>
                     </ul>
                     <div className="flex gap-2 items-center sm:order-4">
                         <span><i className="cursor-pointer text-2xl font-bolder bi bi-person hover:text-red-500 transition-colors"></i></span>

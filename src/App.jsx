@@ -1,5 +1,5 @@
 import Navbar from "./components/Navbar.jsx"
-import Index from "./components/Index.jsx";
+import Home from "./components/Home.jsx";
 import ItemListContainer from "./components/ItemListContainer.jsx";
 import ItemDetailContainer from "./components/ItemDetailContainer.jsx";
 import Footer from "./components/Footer.jsx";
@@ -13,9 +13,9 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <Routes>
-          <Route path="/" element={<Index />} />
+          <Route path="/" element={<Home />} />
           <Route path="/zapatillas" element={<ItemListContainer />} />
-          <Route exact path="/zapatillas/:category" element={<ItemListContainer />} />
+          <Route path="/zapatillas/:category" element={<ItemListContainer />} />
           <Route path="/item/:id" element={<ItemDetailContainer />} />
         </Routes>
         <Footer />
