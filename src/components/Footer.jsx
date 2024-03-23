@@ -80,9 +80,9 @@ const Footer = () => {
                             <div className=" h-20 w-16 cursor-pointer lg:h-12 lg:w-8"><img className=" w-full h-full" src="https://nikearprod.vtexassets.com/assets/vtex.file-manager-graphql/images/3b08c03e-be05-49c1-9579-193190c40b2e___d5b5ce1ab2c443765cd3beb7183e1cae.jpg" alt="Data Fiscal Link" /></div>
                         </div>
                         <div className="flex space-x-6 text-3xl text-stone-500 mx-auto">
-                            <a href=""><i className="bi bi-facebook hover:text-white transition-colors duration-300"></i></a>
-                            <a href=""><i className="bi bi-instagram hover:text-white transition-colors duration-300"></i></a>
-                            <a href=""><i className="bi bi-whatsapp hover:text-white transition-colors duration-300"></i></a>
+                            <Link href=""><i className="bi bi-facebook hover:text-white transition-colors duration-300"></i></Link>
+                            <Link href=""><i className="bi bi-instagram hover:text-white transition-colors duration-300"></i></Link>
+                            <Link href=""><i className="bi bi-whatsapp hover:text-white transition-colors duration-300"></i></Link>
                         </div>
                     </section>
                 </div>
@@ -101,8 +101,8 @@ const Footer = () => {
                             <small>Developed by <Link className="text-white hover:text-cyan-300 transition-colors duration-300 font-bold" to="https://github.com/leandro-cajal">Leo</Link></small>
                         </div>
                         <div className="space-x-2 ">
-                            <a className="text-[10px] hover:text-white transition-colors duration-500" href="">Términos y condiciones</a>
-                            <a className="text-[10px] hover:text-white transition-colors duration-500" href="">Politicas de privacidad y cookies</a>
+                            <Link className="text-[10px] hover:text-white transition-colors duration-500" href="">Términos y condiciones</Link>
+                            <Link className="text-[10px] hover:text-white transition-colors duration-500" href="">Politicas de privacidad y cookies</Link>
                         </div>
                     </div>
                 </div>

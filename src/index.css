@@ -4,7 +4,4 @@
 @import 'tailwindcss/utilities';
 
 @layer components {
-  .active{
-    @apply border-b-red-600
-  }
   }

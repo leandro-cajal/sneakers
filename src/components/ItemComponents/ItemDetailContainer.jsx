@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { GetItemById } from "../FetchData";
+import { GetItemById } from "../../FetchData";
 import { ItemDetail } from "./ItemDetail";
 import { useParams } from "react-router-dom";
 

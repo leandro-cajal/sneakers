@@ -9,7 +9,7 @@ const Home = () => {
             </div>
             <div className="flex flex-col items-center gap-4">
                 <p className=" text-[50px] font-black">RUN YOUR RUN</p>
-                <Link className="bg-black rounded-full text-white px-6 py-3 font-bold text-sm hover:bg-red-600 transition-all duration-300" to={`/item/4`}>Comprar</Link>
+                <Link className="bg-black rounded-full text-white px-6 py-3 font-bold text-sm hover:bg-red-600 transition-all duration-300" to={`/zapatillas/new`}>Comprar</Link>
             </div>
         </div>
         <div className="mx-auto max-w-7xl space-y-14 pb-4'">

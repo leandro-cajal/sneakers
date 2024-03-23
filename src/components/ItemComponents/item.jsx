@@ -7,14 +7,12 @@ const Item = ({product}) => {
                 <img className='w-full object-cover h-full hover:scale-125 duration-500 transition-all cursor-pointer' src={product.images[0]} alt={product.name} />
             </div>
             <div className='flex flex-col p-2 gap-2'>
-                <h2 className='text-sm font-light'>{product.model}</h2>
-                <h2 className='text-lg cursor-pointer truncate hover:opacity-70'>
-                    <Link to={`/item/${product.id}`}>{product.name}</Link>
-                </h2>
+                <h3 className='text-sm font-light'>{product.model}</h3>
+                <h2 className='text-lg cursor-pointer truncate hover:opacity-70'>{product.name}</h2>
                 <div className='flex justify-between'>
                     <span className='font-bold'>${product.price}</span>
-                    {product.discount && <p className='text-white p-2 text-xs absolute top-0 right-0 bg-red-600 rounded-tr'>EN OFERTA</p>}
-                    {product.new && <p className='text-white p-2 text-xs absolute top-0 left-0 bg-black rounded-tl'>Novedad</p>}
+                    {product.discount && <p className='text-white p-2 text-xs absolute top-0 right-0 shadow-lg shadow-red-400 bg-red-600 rounded-tr'>EN OFERTA</p>}
+                    {product.new && <p className='text-white p-2 text-xs absolute top-0 left-0 shadow-lg shadow-stone-400 bg-black rounded-tl'>Novedad</p>}
                 </div>
             </div>
         </Link>

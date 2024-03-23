@@ -4,6 +4,7 @@ const Data = [
                     "name": "Nike Air Force 1 '07",
                     "model": "Air Force",
                     "price": 180,
+                    "stock": 10,
                     "sizes": [
                         "US 7",
                         "US 8",
@@ -25,6 +26,7 @@ const Data = [
                     "name": "Nike Air Max 270",
                     "model": "Air Max",
                     "price": 150,
+                    "stock": 10,
                     "sizes": [
                         "US 6",
                         "US 7",
@@ -46,6 +48,7 @@ const Data = [
                     "name": "Nike React Infinity Run Flyknit",
                     "model": "React Infinity",
                     "price": 160,
+                    "stock": 10,
                     "sizes": [
                         "US 7",
                         "US 8",
@@ -70,6 +73,7 @@ const Data = [
                     "model": "Zoom Pegasus",
                     "price": 180,
                     "new": true,
+                    "stock": 10,
                     "sizes": [
                         "US 6",
                         "US 7",
@@ -92,6 +96,7 @@ const Data = [
                     "name": "Nike Air VaporMax Plus",
                     "model": "VaporMax",
                     "price": 190,
+                    "stock": 10,
                     "sizes": [
                         "US 7",
                         "US 8",
@@ -115,6 +120,7 @@ const Data = [
                     "name": "Nike Blazer Mid '77 Vintage",
                     "model": "Blazer Mid",
                     "price": 100,
+                    "stock": 10,
                     "new": true,
                     "sizes": [
                         "US 6",
@@ -139,6 +145,7 @@ const Data = [
                     "name": "Nike Air Zoom Structure 23",
                     "model": "Air Zoom Structure",
                     "price": 120,
+                    "stock": 10,
                     "sizes": [
                         "US 7",
                         "US 8",
@@ -161,6 +168,7 @@ const Data = [
                     "name": "Nike Free RN 5.0",
                     "model": "Free RN",
                     "price": 80,
+                    "stock": 10,
                     "sizes": [
                         "US 6",
                         "US 7",
@@ -184,6 +192,7 @@ const Data = [
                     "name": "Nike Joyride Run Flyknit",
                     "model": "Joyride Run",
                     "price": 200,
+                    "stock": 10,
                     "sizes": [
                         "US 7",
                         "US 8",
@@ -205,6 +214,7 @@ const Data = [
                     "name": "Nike Jordan 1 low",
                     "model": "Jordan 1",
                     "price": 150,
+                    "stock": 10,
                     "sizes": [
                         "US 6",
                         "US 7",
@@ -227,6 +237,7 @@ const Data = [
                     "name": "Nike SB Dunk Low",
                     "model": "SB Dunk",
                     "price": 110,
+                    "stock": 10,
                     "sizes": [
                         "US 7",
                         "US 8",
@@ -248,6 +259,7 @@ const Data = [
                     "name": "Nike Air Zoom SuperRep 4 Next Nature",
                     "model": "Air Zoom SuperRep",
                     "price": 140,
+                    "stock": 10,
                     "sizes": [
                         "US 6",
                         "US 7",
@@ -269,6 +281,7 @@ const Data = [
                     "name": "Nike React Element 55",
                     "model": "React Element",
                     "price": 130,
+                    "stock": 10,
                     "new": true,
                     "sizes": [
                         "US 7",
@@ -291,6 +304,7 @@ const Data = [
                     "name": "Nike Jordan 1 Mid",
                     "model": "Jordan 1",
                     "price": 180,
+                    "stock": 10,
                     "sizes": [
                         "US 6",
                         "US 7",
@@ -313,6 +327,7 @@ const Data = [
                     "name": "Nike Revolution 5",
                     "model": "Revolution",
                     "price": 65,
+                    "stock": 10,
                     "sizes": [
                         "US 7",
                         "US 8",
@@ -334,6 +349,7 @@ const Data = [
                     "name": "Nike Air Max Tailwind IV",
                     "model": "Air Max Tailwind",
                     "price": 160,
+                    "stock": 10,
                     "sizes": [
                         "US 6",
                         "US 7",
@@ -357,6 +373,7 @@ const Data = [
                     "name": "Nike Jordan 1 ",
                     "model": "Jordan 1",
                     "price": 220,
+                    "stock": 10,
                     "sizes": [
                         "US 7",
                         "US 8",
@@ -378,6 +395,7 @@ const Data = [
                     "name": "Nike Air Max 97",
                     "model": "Air Max",
                     "price": 170,
+                    "stock": 10,
                     "sizes": [
                         "US 6",
                         "US 7",
@@ -400,6 +418,7 @@ const Data = [
                     "name": "Nike Epic React Flyknit 2",
                     "model": "Epic React",
                     "price": 150,
+                    "stock": 10,
                     "new": true,
                     "sizes": [
                         "US 7",
