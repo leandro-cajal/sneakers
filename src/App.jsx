@@ -4,18 +4,15 @@ import ItemListContainer from "./components/ItemComponents/ItemListContainer.jsx
 import ItemDetailContainer from "./components/ItemComponents/ItemDetailContainer.jsx";
 import Footer from "./components/Footer.jsx";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { useState } from "react";
-import { CartContext } from "./context/CartContext.jsx";
+import { Cart } from "./components/CartComponents/Cart.jsx";
+import { CartProvider } from "./context/CartContext.jsx";
 
 
 function App() {
 
-  const [ cart , setCart ] = useState([]);
-  const [ finalPrice, setFinalPrice] = useState(0)
-
   return (
     <>
-      <CartContext.Provider value={{cart,setCart,finalPrice,setFinalPrice}}>
+      <CartProvider>
         <BrowserRouter>
           <Navbar />
           <Routes>
@@ -23,10 +20,11 @@ function App() {
             <Route path="/zapatillas" element={<ItemListContainer />} />
             <Route path="/zapatillas/:category" element={<ItemListContainer />} />
             <Route path="/item/:id" element={<ItemDetailContainer />} />
+            <Route path="/cart" element={<Cart />}></Route>
           </Routes>
           <Footer />
         </BrowserRouter>
-      </CartContext.Provider>
+      </CartProvider>
     </>
 
   )

@@ -68,7 +68,7 @@ export const ItemDetail = ({ item }) => {
                         </div>
                     </div>
                     <div className="flex flex-col lg:flex-row gap-6">
-                        <div className="max-w-[600px] w-full">
+                        <div className="max-w-[600px] w-full max-h-[550px] h-full">
                             <div className="h-full w-full max-h-[550px]">
                                 {item.images && item.images.length > 0 && (
                                     <img

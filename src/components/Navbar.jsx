@@ -1,16 +1,42 @@
-import { NavLink, Link, useLocation } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { NavLink, Link, useLocation, useParams } from 'react-router-dom';
 import CartWidget from './CartComponents/CartWidget.jsx';
 import CartPreview from './CartComponents/CartPreview.jsx';
-import { useState } from 'react';
+import { SearchBar } from './SearchBar.jsx';
+import { GetItemsByName } from '../FetchData.js';
 
 const Navbar = () => {
-
     const location = useLocation();
-
-    const [ showCartPreview , setShowCartPreview ] = useState(false);
+    const id = useParams().id
+    const [inputValue, setInputValue] = useState('');
+    const [words, setWords] = useState('');
+    const [showCartPreview, setShowCartPreview] = useState(false);
+    const [resultSearch , setResultSearch] = useState([])
 
     const toggleCartPreview = () => {
         setShowCartPreview(!showCartPreview);
+    };
+
+    const handleKeyDown = (event) => {
+        if (event.key === ' ') {
+            setWords(prevWords => prevWords + " ");
+        } else if (event.key === 'Backspace') {
+            setWords(prevWords => prevWords.slice(0, -1));
+        } else {
+            setWords(prevWords => prevWords + event.key);
+        }
+    };
+    useEffect(() => {
+        GetItemsByName(words.toLowerCase())
+            .then((res)=>setResultSearch(res))
+    }, [words,id]);
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        if (inputValue.trim() !== '') {
+            setWords(prevWords => prevWords + ' ' + inputValue.trim());
+            setInputValue(''); // Limpiar el input después de enviar el formulario
+        }
     };
 
     return (
@@ -38,10 +64,20 @@ const Navbar = () => {
                         <span><i className='cursor-pointer text-2xl font-bolder bi bi-person hover:text-red-500 transition-colors'></i></span>
                         <CartWidget onClick={toggleCartPreview} />
                     </div>
-                    <form id='input-search' className='border-b-2 p-2 flex sm:order-3 just mx-auto lg:mx-0' action=''>
-                        <input className='focus:outline-none focus:text-red-600' type='text'></input>
+                    <form id='input-search' className='border-b-2 p-2 flex sm:order-3 mx-auto lg:mx-0 relative' onSubmit={handleSubmit}>
+                        <input
+                            className='focus:outline-none focus:text-red-600'
+                            type='text'
+                            value={inputValue}
+                            onChange={(event) => setInputValue(event.target.value)}
+                            onKeyUp={handleKeyDown}
+                        />
                         <i className='text-2xl text-gray-500 bi bi-search cursor-pointer hover:text-black'></i>
-                    </form>        
+                        <div className='absolute -right-14 top-[65px] mx-auto w-96 overflow-y-auto max-h-96'>
+                            <SearchBar resultSearch={resultSearch} />   
+                        </div>
+                        
+                    </form>
                 </nav>
                 <div className={`relative`}>
                     <CartPreview showCartPreview={showCartPreview}/> {/* Aquí se muestra el CartPreview si showCartPreview es true */}
@@ -49,6 +85,6 @@ const Navbar = () => {
             </header>
         </>
     );
-}
+};
 
-export default Navbar
+export default Navbar;
