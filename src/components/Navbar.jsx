@@ -3,7 +3,8 @@ import { NavLink, Link, useLocation, useParams } from 'react-router-dom';
 import CartWidget from './CartComponents/CartWidget.jsx';
 import CartPreview from './CartComponents/CartPreview.jsx';
 import { SearchBar } from './SearchBar.jsx';
-import { GetItemsByName } from '../FetchData.js';
+import { getDocs, collection, query, where } from 'firebase/firestore';
+import { db } from '../firebase/config.js';
 
 const Navbar = () => {
     const location = useLocation();
@@ -11,7 +12,7 @@ const Navbar = () => {
     const [inputValue, setInputValue] = useState('');
     const [words, setWords] = useState('');
     const [showCartPreview, setShowCartPreview] = useState(false);
-    const [resultSearch , setResultSearch] = useState([])
+    const [resultSearch, setResultSearch] = useState([])
 
     const toggleCartPreview = () => {
         setShowCartPreview(!showCartPreview);
@@ -26,10 +27,26 @@ const Navbar = () => {
             setWords(prevWords => prevWords + event.key);
         }
     };
+
     useEffect(() => {
-        GetItemsByName(words.toLowerCase())
-            .then((res)=>setResultSearch(res))
-    }, [words,id]);
+        const fetchItems = async () => {
+            if (words.trim() !== '') {
+                const productsRef = collection(db, 'products');
+                const q = query(productsRef, where('name', '>=', words.trim()), where('name', '<=', words.trim() + '\uf8ff'));
+        
+                try {
+                    const querySnapshot = await getDocs(q);
+                    const items = querySnapshot.docs.map(doc => ({ ...doc.data(), id: doc.id }));
+                    setResultSearch(items);
+                } catch (error) {
+                    console.error('Error fetching data:', error);
+                }
+            } else {
+                setResultSearch([]);
+            }
+        };
+        fetchItems();
+    }, [words]);
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -44,7 +61,7 @@ const Navbar = () => {
             <header className='w-full fixed bg-white shadow-lg z-50'>
                 <nav className='max-w-7xl flex items-center justify-between mx-auto flex-wrap py-4 md:py-0 p-4'>
                     <Link to='/' className='hover:opacity-80'>
-                        <img className='w-32 h-6 lg:w-60 lg:h-20 object-cover drop-shadow-lg' src='../public/logo/logo.png' alt='Logo - Sneakers' />
+                        <img className='w-32 h-6 lg:w-60 lg:h-20 object-cover drop-shadow-lg' src='/logo/logo.png' alt='Logo - Sneakers' />
                     </Link>
                     <ul className='hidden lg:flex gap-5 '>
                         <li>
@@ -74,13 +91,13 @@ const Navbar = () => {
                         />
                         <i className='text-2xl text-gray-500 bi bi-search cursor-pointer hover:text-black'></i>
                         <div className='absolute -right-14 top-[65px] mx-auto w-96 overflow-y-auto max-h-96'>
-                            <SearchBar resultSearch={resultSearch} />   
+                            <SearchBar resultSearch={resultSearch} />
                         </div>
-                        
+
                     </form>
                 </nav>
-                <div className={`relative`}>
-                    <CartPreview showCartPreview={showCartPreview}/> {/* Aquí se muestra el CartPreview si showCartPreview es true */}
+                <div className={`relative shadow-2xl`}>
+                    <CartPreview showCartPreview={showCartPreview} /> {/* Aquí se muestra el CartPreview si showCartPreview es true */}
                 </div>
             </header>
         </>

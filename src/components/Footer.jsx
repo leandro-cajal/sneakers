@@ -5,7 +5,7 @@ const Footer = () => {
         <>
             <footer className="bg-black w-full text-white">
                 <div className="max-w-7xl mx-auto">
-                    <section className="flex flex-col wrap space-y-10 px-6 md:items-start md:flex-row pt-10 pb-20 md:gap-10 md:justify-between">
+                    <section className="flex flex-col wrap space-y-10 px-6 lg:items-start lg:flex-row pt-10 pb-20 lg:gap-10 lg:justify-between">
                         <div className="w-40 h-24">
                             <img className="w-full h-full object-cover filter brightness-50 grayscale invert" src="../public/logo/logo.png" alt="Sneakers Logo" />
                         </div>

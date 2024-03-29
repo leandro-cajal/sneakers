@@ -16,7 +16,7 @@ function CartPreview({ showCartPreview }) {
     };
 
     return (
-        <div className={`absolute transform transition-transform overflow-y-auto bg-white max-w-md w-full h-screen top-0 right-0 border-t ${showCartPreview ? "" : "translate-x-full"}`}>
+        <div className={`absolute transform transition-transform duration-300 ease-out shadow-2xl overflow-y-auto bg-white max-w-md w-full h-screen top-0 right-0 border-t ${showCartPreview ? "" : "translate-x-full"}`}>
             <div className=''>
                 <p className='border-b text-lg p-4 font-bold'>MI COMPRA</p>
             </div>

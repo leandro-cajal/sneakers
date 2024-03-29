@@ -12,7 +12,7 @@ const Item = ({product}) => {
                 <div className='flex justify-between'>
                     <span className='font-bold'>${product.price}</span>
                     {product.discount && <p className='text-white p-2 text-xs absolute top-0 right-0 shadow-lg shadow-red-400 bg-red-600 rounded-tr'>EN OFERTA</p>}
-                    {product.new && <p className='text-white p-2 text-xs absolute top-0 left-0 shadow-lg shadow-stone-400 bg-black rounded-tl'>Novedad</p>}
+                    {product.new && <p className='text-white p-2 text-xs absolute top-0 left-0 shadow-lg shadow-stone-400 bg-black rounded-tl'>NOVEDAD</p>}
                 </div>
             </div>
         </Link>

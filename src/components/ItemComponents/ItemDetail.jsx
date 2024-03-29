@@ -18,7 +18,8 @@ export const ItemDetail = ({ item }) => {
                     prod.id === addedItem.id
                         ? { ...prod, stock: prod.stock + 1, sizes: [...prod.sizes, sizeSelected] }
                         : prod
-                ));
+                ))
+                
             } else {
                 setCart(prevCart => [...prevCart, addedItem]);
             }
@@ -47,7 +48,7 @@ export const ItemDetail = ({ item }) => {
         <div className="max-w-7xl mx-auto">
             {item && (
                 <div className="gap-4 flex flex-col lg:flex-row px-4 md:px-0">
-                    <div className="lg:max-w-[160px]">
+                    <div className="lg:max-w-[160px] md:px-6 lg:px-0">
                         <div className="flex lg:flex-col gap-2">
                             {item.images &&
                                 item.images.map((image, index) => (
@@ -68,8 +69,8 @@ export const ItemDetail = ({ item }) => {
                         </div>
                     </div>
                     <div className="flex flex-col lg:flex-row gap-6">
-                        <div className="max-w-[600px] w-full max-h-[550px] h-full">
-                            <div className="h-full w-full max-h-[550px]">
+                        <div className="lg:max-w-[600px] w-full lg:max-h-[550px] h-full">
+                            <div className="h-full w-full overflow-hidden md:px-6 lg:px-0">
                                 {item.images && item.images.length > 0 && (
                                     <img
                                         className="w-full h-full object-cover border border-stone-300"
