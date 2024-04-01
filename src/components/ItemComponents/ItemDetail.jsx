@@ -24,7 +24,7 @@ export const ItemDetail = ({ item }) => {
                 setCart(prevCart => [...prevCart, addedItem]);
             }
     
-            setFinalPrice(prevFinalPrice => prevFinalPrice + addedItem.price);
+            setFinalPrice((prevFinalPrice) => item.discount ? prevFinalPrice + item.discountedPrice : prevFinalPrice + item.price);
         }
     };
 
@@ -82,8 +82,12 @@ export const ItemDetail = ({ item }) => {
                         </div>
                         <div className="">
                             <div className="flex flex-col space-y-4">
-                                <h3 className="text-xl uppercase">{item.name}</h3>
-                                <span className="text-sm">Talles Disponibles</span>
+                                <h3 className="text-xl font-semibold uppercase">{item.name}</h3>
+                                <div className="flex justify-between items-center">
+                                    <span className="text-sm">Talles Disponibles</span>
+                                    <span className="underline text-sm cursor-pointer hover:text-blue-600 mr-[50%]">Guía de talles</span>
+                                </div>
+                                
                                 <div className="flex gap-2">
                                     {item.sizes &&
                                         item.sizes.map((size, index) => (
@@ -104,7 +108,7 @@ export const ItemDetail = ({ item }) => {
                                 </div>
                                 <div className="flex flex-col lg:flex-row gap-4 items-center w-fit">
                                     <span className="px-4 text-3xl ml-auto md:mx-auto font-bold w-fit">
-                                        US${item.price}.00
+                                        US${item.discount ? item.discountedPrice : item.price}.00
                                     </span>
                                     <button
                                         disabled={itemStock === item.stock || sizeSelected === ""}

@@ -5,14 +5,11 @@ import { CartContext } from '../../context/CartContext';
 function CartPreview({ showCartPreview }) {
     const { cart, setCart, finalPrice, setFinalPrice } = useContext(CartContext);
 
-    // Manejador de evento para eliminar un producto del carrito
     const handleRemoveItem = (productDeleted) => {
-        // Filtra los productos del carrito para mantener solo aquellos que no coinciden con el ID del producto seleccionado
         const updatedCart = cart.filter((prod) => prod.id !== productDeleted.id);
-
-        // Actualiza el carrito y el precio final
         setCart(updatedCart);
-        setFinalPrice(finalPrice - (productDeleted.price * productDeleted.stock));
+        setFinalPrice(finalPrice - (
+            (productDeleted.discount ? productDeleted.discountedPrice : productDeleted.price) * productDeleted.stock));
     };
 
     return (
@@ -34,7 +31,7 @@ function CartPreview({ showCartPreview }) {
                                         <div className='flex items-center gap-1 truncate'><span>{prod.stock} x</span><h3>{prod.name}</h3></div>
 
                                         <div className='flex items-center gap-4'>
-                                            <span className='font-semibold text-lg'>US${prod.price}.00</span>
+                                            <span className='font-semibold text-lg'>US${prod.discount ? prod.discountedPrice : prod.price }.00</span>
                                             <i className="text-red-600 text-lg bi bi-trash cursor-pointer" onClick={() => handleRemoveItem(prod)}></i>
                                         </div>
                                     </div>
@@ -63,7 +60,6 @@ function CartPreview({ showCartPreview }) {
                         <p className="text-xl p-4 text-center">Tu carrito está vacío...</p>
                     </div>
                 </div>
-
             )}
         </div>
     );

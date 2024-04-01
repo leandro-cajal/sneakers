@@ -63,7 +63,7 @@ const Navbar = () => {
                     <Link to='/' className='hover:opacity-80'>
                         <img className='w-32 h-6 lg:w-60 lg:h-20 object-cover drop-shadow-lg' src='/logo/logo.png' alt='Logo - Sneakers' />
                     </Link>
-                    <ul className='hidden lg:flex gap-5 '>
+                    <ul className='hidden lg:flex gap-5 font-semibold'>
                         <li>
                             <NavLink className={`hover:text-red-600 border-transparent border-b-2 transition-colors duration-200 py-5 ${location.pathname === '/zapatillas' ? 'text-red-600 border-y-red-600' : ''}`} to='/zapatillas'>ZAPATILLAS</NavLink>
                         </li>
