@@ -12,4 +12,4 @@ const CartWidget = ({ onClick }) => {
     );
 }
 
-export default CartWidget
+export default CartWidget 

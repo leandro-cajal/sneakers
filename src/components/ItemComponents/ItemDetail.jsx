@@ -84,8 +84,8 @@ export const ItemDetail = ({ item }) => {
                             <div className="flex flex-col space-y-4">
                                 <h3 className="text-xl font-semibold uppercase">{item.name}</h3>
                                 <div className="flex justify-between items-center">
-                                    <span className="text-sm">Talles Disponibles</span>
-                                    <span className="underline text-sm cursor-pointer hover:text-blue-600 mr-[50%]">Guía de talles</span>
+                                    <span className="text-sm">Talles Disponibles (US)</span>
+                                    <span className="underline text-sm cursor-pointer hover:text-blue-600 xl:mr-[50%]">Guía de talles</span>
                                 </div>
                                 
                                 <div className="flex gap-2">
@@ -119,7 +119,7 @@ export const ItemDetail = ({ item }) => {
                                         <i className="bi bi-cart3 text-lg"></i> Añadir al Carro
                                     </button>
                                 </div>
-                                <div className="bg-stone-50 text-black p-6 text-xs grid grid-cols-2 w-fit gap-x-28 gap-y-2 border border-stone-300 cursor-pointer">
+                                <div className="bg-stone-50 text-black p-6 text-xs grid grid-cols-2 w-fit lg:gap-x-28 gap-y-2 border border-stone-300 cursor-pointer">
                                     <div className="flex gap-2 items-center">
                                         <i className="bi bi-check-lg text-lg"></i>
                                         <span>Distribuidor Oficial</span>
