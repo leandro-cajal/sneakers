@@ -8,11 +8,11 @@ import { db } from '../firebase/config.js';
 
 const Navbar = () => {
     const location = useLocation();
-    const id = useParams().id
+    const id = useParams().id;
     const [inputValue, setInputValue] = useState(' ');
     const [showCartPreview, setShowCartPreview] = useState(false);
     const [resultSearch, setResultSearch] = useState([]);
-    const [showMenu, setShowmenu] = useState(true)
+    const [showMenu, setShowmenu] = useState(true);
 
     const toggleCartPreview = () => {
         setShowCartPreview(!showCartPreview);

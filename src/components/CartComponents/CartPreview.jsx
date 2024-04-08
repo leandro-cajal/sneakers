@@ -1,9 +1,10 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { CartContext } from '../../context/CartContext';
 
 function CartPreview({ showCartPreview }) {
     const { cart, setCart, finalPrice, setFinalPrice } = useContext(CartContext);
+    const [ shippingCost,setShippingCost ] = useState(10)
 
     const handleRemoveItem = (productDeleted) => {
         const updatedCart = cart.filter((prod) => prod.id !== productDeleted.id);
@@ -11,6 +12,10 @@ function CartPreview({ showCartPreview }) {
         setFinalPrice(finalPrice - (
             (productDeleted.discount ? productDeleted.discountedPrice : productDeleted.price) * productDeleted.stock));
     };
+
+    useEffect(() => {
+        finalPrice > 120 ? setShippingCost(0) : setShippingCost(10)
+      }, [finalPrice])
 
     return (
         <div className={`absolute transform transition-transform duration-300 ease-out shadow-2xl overflow-y-auto bg-white max-w-md w-full h-screen top-0 right-0 border-t ${showCartPreview ? "" : "translate-x-full"}`}>
@@ -46,11 +51,11 @@ function CartPreview({ showCartPreview }) {
                         </div>
                         <div className='flex justify-between item-center p-4'>
                             <span className='text-lg'>Transporte</span>
-                            <span className='text-lg text-green-400'>Gratis</span>
+                            <span className={`text-lg ${shippingCost === 0 ? "text-green-500":""}`}>{shippingCost === 0 ? "Gratis" : `$${shippingCost}.00`}</span>
                         </div>
                     </div>
                     <Link to="/cart" className='p-4 grid place-items-center pb-36'>
-                        <button className='px-8 py-4 text-lg bg-black text-white text-center font-bold lg:hover:bg-red-600 duration-300 transition-colors'>Ver Carrito</button>
+                        <button className='text-lg text-white py-3 rounded bg-red-600 w-full hover:opacity-70 transition-colors'>Ver Carrito</button>
                     </Link>
                 </>
             ) : (
