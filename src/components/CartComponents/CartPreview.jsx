@@ -54,8 +54,8 @@ function CartPreview({ showCartPreview }) {
                             <span className={`text-lg ${shippingCost === 0 ? "text-green-500":""}`}>{shippingCost === 0 ? "Gratis" : `$${shippingCost}.00`}</span>
                         </div>
                     </div>
-                    <Link to="/cart" className='p-4 grid place-items-center pb-36'>
-                        <button className='text-lg text-white py-3 rounded bg-red-600 w-full hover:opacity-70 transition-colors'>Ver Carrito</button>
+                    <Link to="/cart" onClick={showCartPreview} className='p-4 grid place-items-center pb-36'>
+                        <button  className='text-lg text-white py-3 rounded bg-red-600 w-full hover:opacity-70 transition-colors'>Ver Carrito</button>
                     </Link>
                 </>
             ) : (

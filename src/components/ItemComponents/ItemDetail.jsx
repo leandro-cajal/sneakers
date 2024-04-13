@@ -1,35 +1,47 @@
 import React, { useContext, useEffect, useState } from "react";
 import { CartContext } from "../../context/CartContext";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const ItemDetail = ({ item }) => {
     const [sizeSelected, setSizeSelected] = useState("");
     const [imageSelected, setImageSelected] = useState(0);
-    const [itemStock, setItemStock] = useState(1); // Debes declarar itemStock aquí
+    const [itemStock, setItemStock] = useState(1);
     const { cart, setCart, setFinalPrice } = useContext(CartContext);
 
     const handleAddItem = () => {
-        if (itemStock < item.stock) {
-            setItemStock(prevItemStock => prevItemStock + 1);
-            const addedItem = { ...item, stock: itemStock, sizes: [sizeSelected] };
-            const existingItem = cart.find(prod => prod.id === addedItem.id);
-    
-            if (existingItem) {
-                setCart(prevCart => prevCart.map(prod =>
+        if (!sizeSelected) {
+            toast.error("Por favor selecciona un talle para agregar el producto al carrito");
+            return;
+        }
+
+        if (itemStock >= item.stock) {
+            toast.error("¡Lo sentimos, ya no hay suficiente stock disponible!");
+            return;
+        }
+
+        setItemStock((prevItemStock) => prevItemStock + 1);
+        const addedItem = { ...item, stock: itemStock, sizes: [sizeSelected] };
+        const existingItem = cart.find((prod) => prod.id === addedItem.id);
+
+        if (existingItem) {
+            setCart((prevCart) =>
+                prevCart.map((prod) =>
                     prod.id === addedItem.id
                         ? { ...prod, stock: prod.stock + 1, sizes: [...prod.sizes, sizeSelected] }
                         : prod
-                ))
-                
-            } else {
-                setCart(prevCart => [...prevCart, addedItem]);
-            }
-    
-            setFinalPrice((prevFinalPrice) => item.discount ? prevFinalPrice + item.discountedPrice : prevFinalPrice + item.price);
+                )
+            );
+        } else {
+            setCart((prevCart) => [...prevCart, addedItem]);
         }
+
+        setFinalPrice((prevFinalPrice) => (item.discount ? prevFinalPrice + item.discountedPrice : prevFinalPrice + item.price));
+
+        toast.success("¡Producto agregado al carrito correctamente!");
     };
 
     useEffect(() => {
-        console.log(cart);
         const itemInCart = cart.find((prod) => prod.id === item.id);
         if (itemInCart) {
             setItemStock(itemInCart.stock);
@@ -87,15 +99,15 @@ export const ItemDetail = ({ item }) => {
                                     <span className="text-sm">Talles Disponibles (US)</span>
                                     <span className="underline text-sm cursor-pointer hover:text-blue-600 xl:mr-[50%]">Guía de talles</span>
                                 </div>
-                                
+
                                 <div className="flex gap-2">
                                     {item.sizes &&
                                         item.sizes.map((size, index) => (
                                             <div
                                                 key={index}
                                                 className={`grid place-items-center h-14 w-14 transition-colors cursor-pointer ${size === sizeSelected
-                                                        ? "bg-black text-white"
-                                                        : "border-black border bg-stone-100 hover:bg-black hover:text-white "
+                                                    ? "bg-black text-white"
+                                                    : "border-black border bg-stone-100 hover:bg-black hover:text-white "
                                                     }`}
                                                 onClick={() => setSizeSelected(size)}
                                             >
@@ -111,7 +123,6 @@ export const ItemDetail = ({ item }) => {
                                         US${item.discount ? item.discountedPrice : item.price}.00
                                     </span>
                                     <button
-                                        disabled={itemStock === item.stock || sizeSelected === ""}
                                         onClick={handleAddItem}
                                         className={`p-6 bg-black text-white hover:bg-red-600 border hover:shadow-lg hover:shadow-red-300 hover:border-red-600 border-black hover:text-white duration-300 transition-all uppercase ${itemStock === item.stock || sizeSelected === "" ? "opacity-50 cursor-not-allowed" : ""
                                             }`}

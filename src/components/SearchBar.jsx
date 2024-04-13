@@ -1,11 +1,18 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Link, useParams } from 'react-router-dom';
 
-export const SearchBar = ({ resultSearch, resetWords }) => {
-   
+export const SearchBar = ({ resultSearch, setResultSearch, resetWords }) => {
+    const { id } = useParams();
+
     const handleLinkClick = () => {
-        resetWords;
+        resetWords();
     };
+
+    useEffect(() => {
+        if (resultSearch.length > 0 && id) {
+            setResultSearch([]);
+        }
+    }, [id, resultSearch, setResultSearch]);
 
     return (
         <>
