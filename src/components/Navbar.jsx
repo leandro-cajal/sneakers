@@ -58,7 +58,7 @@ const Navbar = () => {
                             <img className='w-32 h-6 lg:w-60 lg:h-20 object-cover drop-shadow-lg' src='/logo/logo.png' alt='Logo - Sneakers' />
                         </NavLink>
                     </div>
-                    <ul className={` flex flex-col font-semibold absolute w-full bg-white h-screen top-0 left-0 max-w-sm z-50 p-4 items gap-6 lg:static lg:bg-transparent lg:h-auto lg:flex-row lg:gap-5 lg:translate-x-0 transition-transform ${showMenu ? "-translate-x-full" : ""}`}>
+                    <ul className={` flex flex-col font-semibold absolute w-full bg-white h-screen top-0 left-0 max-w-md z-50 p-4 items gap-6 lg:static lg:bg-transparent lg:h-auto lg:flex-row lg:gap-5 lg:translate-x-0 transition-transform ${showMenu ? "-translate-x-full" : ""}`}>
                         <li>
                             <div className='flex justify-between items-center lg:hidden'>
                                 <img className=' w-36 h-12  object-cover drop-shadow-lg ' src='/logo/logo.png' alt='Logo - Sneakers' />

@@ -3,20 +3,19 @@ import { CartContext } from '../context/CartContext'
 import { Link } from 'react-router-dom';
 import { collection, addDoc } from 'firebase/firestore';
 import { db } from '../firebase/config';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export const Checkout = () => {
   const { cart, setCart, finalPrice, setFinalPrice, shippingCost, setShippingCost, discountCode, setDiscountCode, discountApply, setDiscountApply, discountAmount, setDiscountAmount } = useContext(CartContext);
-  const [ orderId , setOrderId ] = useState("")
+  const [ orderId , setOrderId ] = useState("");
+  const [ selectedOption , setSelectedOption ] = useState('');
   const [ formData , setFormData ] = useState({
     fullName: '',
     email: '',
     address: '',
     phone: '',
   });
-
-  const [selectedOption, setSelectedOption] = useState('');
 
   const handleOptionChange = (event) => {
     setSelectedOption(event.target.value);
