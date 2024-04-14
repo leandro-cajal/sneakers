@@ -47,7 +47,6 @@ const Navbar = () => {
         setResultSearch([]);
     },[id])
 
-
     return (
         <>
             <header className='w-full fixed bg-white shadow-lg z-50'>

@@ -9,7 +9,7 @@ import { toast } from 'react-toastify';
 export const Cart = () => {
 
   const { cart, setCart, finalPrice, setFinalPrice, shippingCost , setShippingCost, discountCode, setDiscountCode, discountApply, setDiscountApply, discountAmount, setDiscountAmount } = useContext(CartContext);
-  const [products, setProducts] = useState([])
+  const [products, setProducts] = useState([]);
   // const [shipping, setShipping] = useState(true);
   // const [zipCode, setZipCode] = useState(0);
 
@@ -80,7 +80,6 @@ export const Cart = () => {
   useEffect(() => {
     setDiscountAmount(finalPrice * (10 / 100))
     discountApply ? setFinalPrice(prevFinalPrice => prevFinalPrice - discountAmount) : "";
-
   }, [discountApply])
 
   return (

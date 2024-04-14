@@ -27,7 +27,7 @@ export const Checkout = () => {
   };
 
   const handleSubmit = async (event) => {
-    if (formData.fullName && formData.email && formData.address && formData.phone) {
+    if (formData.fullName && formData.email && formData.address && formData.phone && selectedOption !== "") {
       event.preventDefault();
       const newOrder = {
         products: cart,
