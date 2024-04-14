@@ -8,9 +8,9 @@ import 'react-toastify/dist/ReactToastify.css';
 
 export const Checkout = () => {
   const { cart, setCart, finalPrice, setFinalPrice, shippingCost, setShippingCost, discountCode, setDiscountCode, discountApply, setDiscountApply, discountAmount, setDiscountAmount } = useContext(CartContext);
-  const [ orderId , setOrderId ] = useState("");
-  const [ selectedOption , setSelectedOption ] = useState('');
-  const [ formData , setFormData ] = useState({
+  const [orderId, setOrderId] = useState("");
+  const [selectedOption, setSelectedOption] = useState('');
+  const [formData, setFormData] = useState({
     fullName: '',
     email: '',
     address: '',
@@ -27,31 +27,44 @@ export const Checkout = () => {
   };
 
   const handleSubmit = async (event) => {
-    event.preventDefault();
-    const newOrder = {
-      products: cart,
-      clientData: formData,
-      paymentOption: selectedOption,
-      total: finalPrice,
-      shippingCost: shippingCost
-    };
-  
-    try {
-      const ordersRef = collection(db, "orders");
-      const doc = await addDoc(ordersRef, newOrder);
-      setOrderId(doc.id);
-      setCart([]);
-      setFinalPrice(0);
-      setFormData({
-        fullName: "",
-        email: "",
-        address: "",
-        phone: ""
+    if (formData.fullName && formData.email && formData.address && formData.phone) {
+      event.preventDefault();
+      const newOrder = {
+        products: cart,
+        clientData: formData,
+        paymentOption: selectedOption,
+        total: finalPrice,
+        shippingCost: shippingCost
+      };
+
+      try {
+        const ordersRef = collection(db, "orders");
+        const doc = await addDoc(ordersRef, newOrder);
+        setOrderId(doc.id);
+        setCart([]);
+        setFinalPrice(0);
+        setFormData({
+          fullName: "",
+          email: "",
+          address: "",
+          phone: ""
+        });
+        setSelectedOption("");
+      } catch (error) {
+        console.error("Error al enviar la orden:", error);
+      }
+    }else{
+      toast.error("Debe completar los campos del formulario para finalizar la compra", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: true,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
       });
-      setSelectedOption("");
-    } catch (error) {
-      console.error("Error al enviar la orden:", error);
     }
+
   };
 
   useEffect(() => {
