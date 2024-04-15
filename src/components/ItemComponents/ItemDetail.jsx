@@ -64,18 +64,8 @@ export const ItemDetail = ({ item }) => {
                         <div className="flex lg:flex-col gap-2">
                             {item.images &&
                                 item.images.map((image, index) => (
-                                    <div
-                                        className={`lg:w-24 lg:h-20 border border-stone-300 ${index === imageSelected ? "brightness-75" : ""
-                                            }`}
-                                        key={index}
-                                        onClick={() => handleImageClick(index)}
-                                    >
-                                        <img
-                                            className={`w-full h-full object-cover hover:filter ${index === imageSelected ? "" : "hover:brightness-75"
-                                                } cursor-pointer`}
-                                            src={image}
-                                            alt={item.name}
-                                        />
+                                    <div className={`lg:w-24 lg:h-20 border border-stone-300 ${index === imageSelected ? "brightness-75" : ""}`}key={index}onClick={() => handleImageClick(index)}>
+                                        <img className={`w-full h-full object-cover hover:filter ${index === imageSelected ? "" : "hover:brightness-75"} cursor-pointer`} src={image} alt={item.name}/>
                                     </div>
                                 ))}
                         </div>
