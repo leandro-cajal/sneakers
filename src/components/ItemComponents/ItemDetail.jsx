@@ -11,12 +11,16 @@ export const ItemDetail = ({ item }) => {
 
     const handleAddItem = () => {
         if (!sizeSelected) {
-            toast.error("Por favor selecciona un talle para agregar el producto al carrito");
+            toast.error("Por favor selecciona un talle para agregar el producto al carrito",{
+                position: "bottom-left",
+              });
             return;
         }
 
         if (itemStock >= item.stock) {
-            toast.error("¡Lo sentimos, ya no hay suficiente stock disponible!");
+            toast.error("¡Lo sentimos, ya no hay suficiente stock disponible!",{
+                position: "bottom-left",
+              });
             return;
         }
 
@@ -37,8 +41,10 @@ export const ItemDetail = ({ item }) => {
         }
 
         setFinalPrice((prevFinalPrice) => (item.discount ? prevFinalPrice + item.discountedPrice : prevFinalPrice + item.price));
-
-        toast.success("¡Producto agregado al carrito correctamente!");
+        
+        toast.success("¡Producto agregado al carrito correctamente!", {
+            position: "bottom-left",
+          });
     };
 
     useEffect(() => {
@@ -53,8 +59,6 @@ export const ItemDetail = ({ item }) => {
     const handleImageClick = (index) => {
         setImageSelected(index);
     };
-
-
 
     return (
         <div className="max-w-7xl mx-auto">
@@ -114,7 +118,7 @@ export const ItemDetail = ({ item }) => {
                                     </span>
                                     <button
                                         onClick={handleAddItem}
-                                        className={`p-6 bg-black text-white hover:bg-red-600 border hover:shadow-lg hover:shadow-red-300 hover:border-red-600 border-black hover:text-white duration-300 transition-all uppercase ${itemStock === item.stock || sizeSelected === "" ? "opacity-50 cursor-not-allowed" : ""
+                                        className={`p-6 bg-black text-white hover:bg-red-600 rounded-lg border hover:shadow-lg hover:shadow-red-300 hover:border-red-600 border-black hover:text-white duration-300 transition-all uppercase ${itemStock === item.stock || sizeSelected === "" ? "opacity-50 cursor-not-allowed" : ""
                                             }`}
                                     >
                                         <i className="bi bi-cart3 text-lg"></i> Añadir al Carro

@@ -7,7 +7,7 @@ const Footer = () => {
                 <div className="max-w-7xl mx-auto">
                     <section className="flex flex-col wrap space-y-10 px-6 lg:items-start lg:flex-row pt-10 pb-20 lg:gap-10 lg:justify-between">
                         <div className="w-40 h-24">
-                            <img className="w-full h-full object-cover filter brightness-50 grayscale invert" src="../public/logo/logo.png" alt="Sneakers Logo" />
+                            <img className="w-full h-full object-cover filter brightness-50 grayscale invert" src="/logo/logo.png" alt="Sneakers Logo" />
                         </div>
                         <div className="text-sm space-y-2">
                             <p className=" font-extrabold cursor-pointer">AYUDA</p>
