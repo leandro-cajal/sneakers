@@ -72,9 +72,9 @@ export const Checkout = () => {
       setConfirmationMessage(
         <div className='max-w-7xl mx-auto py-32'>
           <div className='p-6 mx-4 xl:mx-0 bg-white flex flex-col rounded gap-8'>
-            <p className='text-center font-semibold text-lg'> Compra finalizada con éxito. Tu número de pedido es: <span className='text-green-500 font-semibold'>{orderId}</span>!</p>
-            <span className='text-center text-sm'>Para seguir comprando, navegar por las categorías en el sitio, o busque su producto.</span>
-            <Link className='mx-auto text-lg text-white py-3 px-10 rounded bg-red-600 hover:opacity-70 transition-colors w-fit' to="/zapatillas">Elegir Productos</Link>
+            <p className='text-center font-semibold text-lg'> Compra finalizada con éxito. Tu código de pedido es: <span className='text-green-500 font-semibold'>{orderId}</span>!</p>
+            <span className='text-center text-sm'>Para seguir comprando, navegar por las categorías en el sitio, o buscar un producto haga click en el boton de "ver más productos".</span>
+            <Link className='mx-auto text-lg text-white py-3 px-10 rounded bg-red-600 hover:opacity-70 transition-colors w-fit' to="/zapatillas">Ver más productos</Link>
           </div>
         </div>
       );
