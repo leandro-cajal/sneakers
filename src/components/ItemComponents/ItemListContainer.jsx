@@ -3,6 +3,7 @@ import ItemList from './ItemList';
 import { useParams } from 'react-router-dom';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../../firebase/config';
+import Spinner from '../Spinner';
 
 const ItemListContainer = () => {
     const [loading, setLoading] = useState(true);
@@ -11,6 +12,7 @@ const ItemListContainer = () => {
 
     useEffect(() => {
         const productsRef = collection(db, "products");
+        setLoading(true);
         getDocs(productsRef)
             .then((resp) => {
                 const prods = resp.docs.map((doc) => {
@@ -53,6 +55,12 @@ const ItemListContainer = () => {
         return (
                 <div className='max-w-7xl mx-auto py-28 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:justify-center justify-items-center px-4 xl:px-0'>
                     {loadingCards}
+                    <div className='absolute top-[40%] mx-auto'>
+                        <div className='flex justify-center gap-2 items-center'>
+                            <span className='font-semibold text-lg'>Cargando</span>
+                            <Spinner size={8} color="white" />
+                        </div>
+                    </div>
                 </div>
         );
     };

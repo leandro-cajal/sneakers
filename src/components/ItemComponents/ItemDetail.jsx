@@ -8,7 +8,12 @@ export const ItemDetail = ({ item }) => {
     const [imageSelected, setImageSelected] = useState(0);
     const [itemStock, setItemStock] = useState(1);
     const { cart, setCart, setFinalPrice } = useContext(CartContext);
+    const [loading, setLoading] = useState(true);
 
+
+    useEffect(() => {
+        setLoading(false);
+    }, [item]);
     const handleAddItem = () => {
         if (!sizeSelected) {
             toast.error("Por favor selecciona un talle para agregar el producto al carrito",{
