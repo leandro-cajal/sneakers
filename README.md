@@ -49,7 +49,7 @@ Este proyecto fue desarrollado como parte de mi formación en el curso de React 
 1. Clona este repositorio en tu máquina local.
 2. Instala las dependencias utilizando `npm install`.
 3. Ejecuta la aplicación utilizando `npm run dev`.
-4. Accede a `http://localhost:3000` en tu navegador para ver la página en acción.
+4. Accede a `http://localhost:5173` en tu navegador para ver la página en acción.
 
 ## Despliegue en Netlify
 
